@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="strtus.i18n.encoding" value="UTF-8" />
+    <package name="userlogin" extends="struts-default">
+    
+        <action name="login">
+            <result>userLogin.jsp</result>
+        </action>
+        <action name="backlogin">
+            <result>userLogin.jsp</result>
+        </action>
+        
+        <action name="register">
+            <result>register.jsp</result>
+        </action>
+          <action name="modifyPwd">
+            <result>modifyPwd.jsp</result>
+        </action>
+        <action name="deleteUser">
+            <result>deleteUser.jsp</result>
+        </action>
+        
+        <action name="loginAction" class="LoginAction">
+            <result name="success">logined.jsp</result>
+            <result name="input">userLogin.jsp</result>
+            <result name="error">loginfailed.jsp</result>
+            <result name="modifypwd">modifyPwd.jsp</result>
+        </action>
+        
+<!--     <action name="toActivateAction" class="ToActivateAction">
+            <result name="success">logined.jsp</result>
+        </action>
+ -->        
+ 
+         <action name="modifyPwdAction" class="ModifyPwdAction">
+            <result name="userlogin">userLogin.jsp</result>
+            <result name="input">modifyPwd.jsp</result>
+            <result name="ReLogin">userLogin.jsp</result>
+        </action>
+        <action name="registerAction" class="RegisterAction">
+            <!-- <result name="success" type="redirect">loginAction.action</result>-->
+            <result name="success">userLogin.jsp</result>
+            <result name="input">register.jsp</result>
+        </action>
+        <action name="deleteUserAction" class="DeleteUserAction">
+            <!-- <result name="success" type="redirect">loginAction.action</result>-->
+            <result name="success">deleteUser.jsp</result>
+            <result name="error">deleteUser.jsp</result>
+        </action>
+        
+    </package>
+</struts>

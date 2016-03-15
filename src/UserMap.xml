@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="IUserInfo">
+
+    <resultMap type="UserInfo" id="userResultMap">
+        <id property="userid" column="USERID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="userpwd" column="USERPWD"/>
+        <result property="userStatus" column="USERSTATUS"/>
+         <result property="userTime" column="USERTIME"/>
+    </resultMap>
+    
+    <select id="findByName" parameterType="String" resultMap="userResultMap">
+                SELECT * FROM USERINFO SU  
+                    WHERE SU.USERNAME = #{username}
+    </select>
+    
+    <!-- 
+    <select id="findById" parameterType="String" resultMap="userResultMap">
+                SELECT * FROM USERINFO SU  
+                    WHERE SU.USERNAME = #{userid}
+    </select>
+     -->
+    
+    <insert id="insertUser" parameterType="UserInfo">
+                INSERT INTO USERINFO(USERID,USERNAME,USERPWD,USERSTATUS,USERTIME)
+                    VALUES(#{userid},#{username},#{userpwd},#{userStatus},#{userTime})
+    </insert>
+    
+    
+    <update id="updateToPwd" parameterType="Map">
+                UPDATE USERINFO SU
+                    SET     SU.USERPWD= #{userpwd}
+                    WHERE SU.USERNAME= #{username}
+    </update>
+    
+    
+    <delete id="deleteUser" parameterType="UserInfo"> 
+            DELETE FROM USERINFO
+                    WHERE USERNAME = #{username}
+            
+    </delete> 
+
+</mapper>  
